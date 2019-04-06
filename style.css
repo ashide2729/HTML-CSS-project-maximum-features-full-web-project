@@ -1,0 +1,290 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: gray;
+    overflow: hidden; 
+    height: 100vh;
+    overflow-y: scroll;
+    
+}
+
+.v-header{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.container{
+    max-width: 960px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.fullscreen-video-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fullscreen-video-wrap video{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.header-overlay{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: lightblue;
+    z-index: 1;
+    opacity: 0.75;
+}
+
+.navbar{
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background: rgba(38, 114, 139, 7);
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li{
+    margin: 0 1rem;
+    padding: 1rem;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: whitesmoke;
+}
+
+.navbar ul li a:hover{
+    color: lightblue;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
+
+section h2{
+    font-size: 4rem;
+}
+
+section p{
+    font-size: 1.5rem;
+}
+
+.header-content{
+    z-index: 2;
+}
+
+.header-content h1{
+    font-size: 4rem;
+    background: url(img/stripes.jpg) no-repeat;
+    margin: 0;
+    padding: 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: moveBg 10s linear infinite;
+    -webkit-animation: moveBg 10s linear infinite;
+}
+
+@keyframes moveBg{
+    0%{
+        background-position: 0% 30%;
+    }
+
+    100%{
+        background-position: 100% 50%;
+    }
+}
+
+.header-content p{
+    font-size: 1.5rem;
+    display: block;
+    padding-bottom: 2rem;
+}
+
+.btn{
+    background: rgb(38, 114, 139);
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    animation-name: btn;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn{
+    0%  {opacity: 0;}
+    100%{opacity: 1;}
+}
+
+/*photo slide*/
+
+#photos{
+    position: absolute;  
+}
+
+.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slide.current{
+    opacity: 1;
+}
+
+.slide .content{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    position: absolute;
+    bottom: 50px;
+    left: -600px;
+    opacity: 0;
+    width: 500px;
+    padding: 35px;
+}
+
+.slide .content h1{
+    margin-bottom: 10px;
+}
+
+.slide.current .content{
+    opacity: 1;
+    transform: translateX(600px);
+    transition: all 0.7s ease-in-out 0.3s;
+}
+
+button#next{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+}
+
+button{
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 13px 15px;
+    font-size: 20px;
+}
+
+button:hover{
+    color: blue;
+    border: burlywood;
+}
+
+.slide:first-child{
+    background: url(img/action-adventure-dirt-road-758744.jpg) no-repeat center center/cover;
+}
+
+.slide:nth-child(2){
+    background: url(img/adult-adventure-backlit-915972.jpg) no-repeat center center/cover;
+}
+
+.slide:nth-child(3){
+    background: url(img/adult-adventure-backpack-1230302.jpg) no-repeat center center/cover;
+}
+
+.slide:nth-child(4){
+    background: url(img/adventure-asphalt-country-533671.jpg) no-repeat center center/cover;
+}
+
+.slide:nth-child(5){
+    background: url(img/architecture-buildings-city-219692.jpg) no-repeat center center/cover;
+}
+
+.slide:nth-child(6){
+    background: url(img/bridge-brooklyn-bridge-buildings-534757.jpg) no-repeat center center/cover;
+}
+
+
+@media(max-width:960px){
+
+.container{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    overflow: hidden;
+}
+
+.header-content{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.header-content h1{
+    font-size: 3rem;
+}
+
+}
+
+@media(max-width: 500px){
+
+    body{
+        overflow: hidden;
+    }
+
+    .slide .content{
+        bottom: -300px;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        padding: 1px;
+    }
+
+    .slide.current .content{
+        transform: translateY(-300px);
+    }
+
+    .slide .content p{
+        display: none;
+    }
+
+}
